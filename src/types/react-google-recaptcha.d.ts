@@ -6,5 +6,9 @@ declare module 'react-google-recaptcha' {
     onChange?: (value: string | null) => void;
   }
 
-  export default class ReCAPTCHA extends Component<ReCAPTCHAProps> {}
+  export default class ReCAPTCHA extends Component<ReCAPTCHAProps> {
+    refs: {
+      [key: string]: React.ReactInstance;
+    };
+  }
 } 
