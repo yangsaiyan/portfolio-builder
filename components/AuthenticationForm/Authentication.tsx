@@ -126,7 +126,7 @@ export default function Authentication() {
             }}
           />
           <HCaptcha
-            sitekey="YOUR_SITE_KEY"
+            sitekey={import.meta.env.VITE_CAPTCHA_SITE}
             onVerify={(token: string) => {
               console.log("Captcha token:", token);
             }}
