@@ -12,7 +12,7 @@ import {
   TipContainer,
 } from "./style";
 import { IconButton, InputAdornment } from "@mui/material";
-import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha/lib/ReCAPTCHA";
 
 interface AuthenticationForm {
   username: string;
