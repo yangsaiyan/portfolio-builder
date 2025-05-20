@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@hcaptcha/react-hcaptcha": "^1.12.0",
     "@heroicons/react": "^2.2.0",
     "@mui/material": "^7.1.0",
     "@react-three/drei": "^10.0.8",
@@ -19,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-recaptcha": "^3.1.0",
+    "react-hcaptcha": "^0.1.1",
     "react-router-dom": "^6.22.3",
     "three": "^0.176.0"
   },

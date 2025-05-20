@@ -12,7 +12,7 @@ import {
   TipContainer,
 } from "./style";
 import { IconButton, InputAdornment } from "@mui/material";
-import ReCAPTCHA from 'react-google-recaptcha'
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 interface AuthenticationForm {
   username: string;
@@ -125,10 +125,10 @@ export default function Authentication() {
               ),
             }}
           />
-          <ReCAPTCHA
-            sitekey={import.meta.env.VITE_GOOGLE_CAPTCHA_SITE}
-            onChange={(value: string | null) => {
-              console.log("Captcha value:", value);
+          <HCaptcha
+            sitekey="YOUR_SITE_KEY"
+            onVerify={(token: string) => {
+              console.log("Captcha token:", token);
             }}
           />
           <StyledButton type="submit">
