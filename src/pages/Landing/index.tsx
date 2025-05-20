@@ -1,7 +1,15 @@
+import {
+  InputContainer,
+  StyledButton,
+  StyledContainer,
+  StyledGrid,
+  StyledInput,
+  StyledTitle,
+} from "./style";
+import Authentication from "../../../components/AuthenticationForm/Authentication";
+
 export default function Landing() {
-    return (
-        <div>
-            <h1>Landing</h1>
-        </div>
-    )
+  return (
+    <Authentication />
+  );
 }
