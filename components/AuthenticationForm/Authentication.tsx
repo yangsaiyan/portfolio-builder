@@ -127,7 +127,7 @@ export default function Authentication() {
           />
           <ReCAPTCHA
             sitekey={import.meta.env.VITE_GOOGLE_CAPTCHA_SITE}
-            onChange={(value: any) => {
+            onChange={(value: string | null) => {
               console.log("Captcha value:", value);
             }}
           />
