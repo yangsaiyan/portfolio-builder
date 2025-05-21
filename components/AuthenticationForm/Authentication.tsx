@@ -5,7 +5,6 @@ import {
   StyledContainer,
   StyledEyeIcon,
   StyledEyeSlashIcon,
-  StyledGrid,
   StyledInput,
   StyledTip,
   StyledTitle,
@@ -136,6 +135,8 @@ export default function Authentication() {
       }));
       return false;
     }
+
+    console.log(error);
 
     return true;
   };

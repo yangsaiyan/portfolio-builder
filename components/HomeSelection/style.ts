@@ -47,7 +47,7 @@ export const StyledTitle = styled(Typography)({
   color: "#ffffff",
 });
 
-export const StyledCard = styled(Card)<{ cardId: number }>(({ cardId }) => ({
+export const StyledCard = styled(Card)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -63,7 +63,7 @@ export const StyledCard = styled(Card)<{ cardId: number }>(({ cardId }) => ({
   "&:hover": {
     transform: "scale(1.05)",
   },
-}));
+});
 
 export const StyledCardContent = styled(CardContent)({
   display: "flex",

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   StyledCard,
   StyledCardContainer,
@@ -19,7 +18,7 @@ export default function HomeSelection() {
         <StyledTitle>Home</StyledTitle>
       </StyledTitleContainer>
       <StyledCardContainer>
-        <StyledCard cardId={1}>
+        <StyledCard>
           <StyledCardContent>
             <StyledPencilSquareIcon />
             <StyledCardTitle>Edit</StyledCardTitle>
@@ -28,7 +27,7 @@ export default function HomeSelection() {
             </StyledCardDescription>
           </StyledCardContent>
         </StyledCard>
-        <StyledCard cardId={2}>
+        <StyledCard>
           <StyledCardContent>
             <StyledDocumentCheckIcon />
             <StyledCardTitle>View</StyledCardTitle>
