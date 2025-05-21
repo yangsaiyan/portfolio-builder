@@ -141,56 +141,54 @@ export default function Authentication() {
   };
 
   return (
-    <StyledGrid>
-      <StyledContainer>
-        <StyledTitle>{isSignUp ? "Sign Up" : "Sign In"}</StyledTitle>
-        <InputContainer onSubmit={handleSubmit}>
-          <StyledInput
-            label="Username"
-            variant="standard"
-            name="username"
-            value={user.username}
-            onChange={handleChange}
-          />
-          <StyledInput
-            type={showPassword ? "text" : "password"}
-            label="Password"
-            variant="standard"
-            name="password"
-            value={user.password}
-            onChange={handleChange}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end" sx={{ marginRight: "10px" }}>
-                  <IconButton
-                    onClick={() => setShowPassword(!showPassword)}
-                    edge="end"
-                  >
-                    {showPassword ? <StyledEyeSlashIcon /> : <StyledEyeIcon />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-          <HCaptcha
-            sitekey={import.meta.env.VITE_CAPTCHA_SITE}
-            onVerify={(token) => {
-              setCaptchaToken(token);
-            }}
-          />
-          <StyledButton type="submit">
-            {isSignUp ? "Sign Up" : "Sign In"}
-          </StyledButton>
-          <TipContainer>
-            <StyledTip>
-              {isSignUp ? "Already have an account?" : "Don't have an account?"}
-            </StyledTip>
-            <StyledTip action={true} onClick={() => setIsSignUp(!isSignUp)}>
-              {isSignUp ? "Sign In" : "Sign Up"}
-            </StyledTip>
-          </TipContainer>
-        </InputContainer>
-      </StyledContainer>
-    </StyledGrid>
+    <StyledContainer>
+      <StyledTitle>{isSignUp ? "Sign Up" : "Sign In"}</StyledTitle>
+      <InputContainer onSubmit={handleSubmit}>
+        <StyledInput
+          label="Username"
+          variant="standard"
+          name="username"
+          value={user.username}
+          onChange={handleChange}
+        />
+        <StyledInput
+          type={showPassword ? "text" : "password"}
+          label="Password"
+          variant="standard"
+          name="password"
+          value={user.password}
+          onChange={handleChange}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end" sx={{ marginRight: "10px" }}>
+                <IconButton
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {showPassword ? <StyledEyeSlashIcon /> : <StyledEyeIcon />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+        <HCaptcha
+          sitekey={import.meta.env.VITE_CAPTCHA_SITE}
+          onVerify={(token) => {
+            setCaptchaToken(token);
+          }}
+        />
+        <StyledButton type="submit">
+          {isSignUp ? "Sign Up" : "Sign In"}
+        </StyledButton>
+        <TipContainer>
+          <StyledTip>
+            {isSignUp ? "Already have an account?" : "Don't have an account?"}
+          </StyledTip>
+          <StyledTip action={true} onClick={() => setIsSignUp(!isSignUp)}>
+            {isSignUp ? "Sign In" : "Sign Up"}
+          </StyledTip>
+        </TipContainer>
+      </InputContainer>
+    </StyledContainer>
   );
 }

@@ -1,8 +1,10 @@
+import { StyledGrid } from "../../../components/AuthenticationForm/style";
+import HomeSelection from "../../../components/HomeSelection/HomeSelection";
 
 export default function Home() {
-    return (
-        <div>
-            <h1>Home</h1>
-        </div>
-    )
+  return (
+    <StyledGrid>
+      <HomeSelection />
+    </StyledGrid>
+  );
 }

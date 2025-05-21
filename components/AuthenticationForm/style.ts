@@ -30,6 +30,7 @@ export const StyledContainer = styled(Grid)({
     backgroundColor: "#282828",
     boxShadow: "0px 0px 100px 10px rgba(28,28,28,1)",
     borderRadius: "24px",
+    border: "2px solid rgba(255, 255, 255, 0.2)",
 })
 
 export const StyledTitle = styled(Typography)({

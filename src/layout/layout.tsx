@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <StyledGrid>
-      {location.pathname !== "/landing" && <Navbar />}
+      {/* {location.pathname !== "/landing" && <Navbar />} */}
       {children}
     </StyledGrid>
   );
