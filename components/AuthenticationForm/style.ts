@@ -23,8 +23,9 @@ export const StyledContainer = styled(Grid)({
     width: "100%",
     height: "100%",
     maxWidth: "720px",
-    maxHeight: "368px",
-    padding: "30px 0 30px 0",
+    maxHeight: "420px",
+    padding: "30px 20px 30px 20px",
+    margin: "30px",
 
     backgroundColor: "#282828",
     boxShadow: "0px 0px 100px 10px rgba(28,28,28,1)",
