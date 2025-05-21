@@ -1,6 +1,5 @@
 import Authentication from "../../../components/AuthenticationForm/Authentication";
-import { StyledGrid } from "../../../components/AuthenticationForm/style";
-
+import { StyledGrid } from "../../layout/style";
 export default function Landing() {
   return (
     <StyledGrid>
