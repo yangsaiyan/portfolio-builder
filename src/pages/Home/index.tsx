@@ -1,6 +1,6 @@
 
 import HomeSelection from "../../../components/HomeSelection/HomeSelection";
-import { StyledGrid } from "../../layout/style";
+import { StyledGrid } from "./style";
 
 export default function Home() {
   return (
