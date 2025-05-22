@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import {
   StyledCard,
   StyledCardContainer,
@@ -7,18 +9,28 @@ import {
   StyledContainer,
   StyledDocumentCheckIcon,
   StyledPencilSquareIcon,
+  StyledTitle,
   StyledTitleContainer,
 } from "./style";
-import { StyledTitle } from "../AuthenticationForm/style";
 
 export default function HomeSelection() {
+  const navigate = useNavigate();
+
+  const navigateToEditPage = (): void => {
+    navigate("/edit");
+  };
+
+  const navigateToViewPage = (): void => {
+    navigate("/view");
+  };
+
   return (
     <StyledContainer>
       <StyledTitleContainer>
         <StyledTitle>Home</StyledTitle>
       </StyledTitleContainer>
       <StyledCardContainer>
-        <StyledCard>
+        <StyledCard onClick={navigateToEditPage}>
           <StyledCardContent>
             <StyledPencilSquareIcon />
             <StyledCardTitle>Edit</StyledCardTitle>
@@ -27,7 +39,7 @@ export default function HomeSelection() {
             </StyledCardDescription>
           </StyledCardContent>
         </StyledCard>
-        <StyledCard>
+        <StyledCard onClick={navigateToViewPage}>
           <StyledCardContent>
             <StyledDocumentCheckIcon />
             <StyledCardTitle>View</StyledCardTitle>
