@@ -49,7 +49,7 @@ export default function EditForm(props: EditFormProps) {
     }, 500),
     [currentSection, dispatch]
   );
-  console.log(user)
+  console.log(user);
 
   useEffect(() => {
     debouncedUpdate(formData);
@@ -67,7 +67,12 @@ export default function EditForm(props: EditFormProps) {
           ...prev.user[currentSection as keyof typeof prev.user],
           [key]: subKey
             ? {
-                ...(prev.user[currentSection as keyof typeof prev.user] as Record<string, any>)[key],
+                ...(
+                  prev.user[currentSection as keyof typeof prev.user] as Record<
+                    string,
+                    any
+                  >
+                )[key],
                 [subKey]: value,
               }
             : value,
@@ -86,6 +91,15 @@ export default function EditForm(props: EditFormProps) {
         currentUser.user[currentSection as keyof typeof currentUser.user];
       const filteredData = { ...section };
       delete filteredData[key as keyof typeof section];
+
+      setCurrentUser((prev) => ({
+        ...prev,
+        user: {
+          ...prev.user,
+          [currentSection]: filteredData,
+        },
+      }));
+
       setFormData(filteredData);
       dispatch(updateUser({ [currentSection]: filteredData }));
     } else {
@@ -98,6 +112,15 @@ export default function EditForm(props: EditFormProps) {
       delete filteredData[key as keyof typeof section][
         subKey as keyof typeof test
       ];
+
+      setCurrentUser((prev) => ({
+        ...prev,
+        user: {
+          ...prev.user,
+          [currentSection]: filteredData,
+        },
+      }));
+
       setFormData(filteredData);
       dispatch(updateUser({ [currentSection]: filteredData }));
     }
