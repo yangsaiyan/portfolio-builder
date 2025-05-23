@@ -57,7 +57,10 @@ export default function EditSidebar(props: EditFormProps) {
         <StyledSectionContainer>
           {Object.keys(user.user).map((section) => (
             <Collapse key={section} sx={{ width: "100%" }}>
-              <StyledSectionTextContainer active={section.toLowerCase() === currentSection.toLowerCase()} onClick={() => handleSectionChange(section)}>
+              <StyledSectionTextContainer
+                active={section.toLowerCase() === currentSection.toLowerCase()}
+                onClick={() => handleSectionChange(section)}
+              >
                 <StyledSectionText>{section}</StyledSectionText>
               </StyledSectionTextContainer>
             </Collapse>

@@ -1,4 +1,4 @@
-import { Grid, TextField, Typography } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
@@ -79,3 +79,29 @@ export const StyledContainer = styled(Grid)({
   width: "100%",
   gap: "10px",
 });
+
+export const StyledHeaderContainer = styled(Grid)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "100%",
+  gap: "10px",
+})
+
+export const StyledHeaderCTAContainer = styled(Grid)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  width: "100%",
+  gap: "10px",
+})
+
+export const StyledHeaderCTAButton = styled(Button)({
+  backgroundColor: "#000000",
+  color: "#ffffff",
+  borderRadius: "5px",
+  padding: "5px 10px",
+  fontSize: "12px",
+  fontWeight: "bold",
+  textTransform: "capitalize",
+})

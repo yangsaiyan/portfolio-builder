@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   StyledAddSectionPopupActions,
   StyledAddSectionPopupButton,
@@ -51,8 +51,8 @@ export default function EditAddSectionPopup(props: EditAddSectionPopupProps) {
       }}
     >
       <StyledAddSectionPopupContent>
-        <StyledAddSectionPopupTitle>Add Section</StyledAddSectionPopupTitle>
-        <StyledAddSectionPopupInput
+        <StyledAddSectionPopupTitle>Coming Soon</StyledAddSectionPopupTitle>
+        {/* <StyledAddSectionPopupInput
           value={section}
           onChange={(e) => {
             setSection(e.target.value);
@@ -117,11 +117,11 @@ export default function EditAddSectionPopup(props: EditAddSectionPopupProps) {
               References
             </StyledSuggestionButton>
           </StyledSuggestionContainer>
-        </StyledSuggestionWrapper>
+        </StyledSuggestionWrapper> */}
         <StyledAddSectionPopupActions>
-          <StyledAddSectionPopupButton onClick={handleAddSectionClick}>
+          {/* <StyledAddSectionPopupButton onClick={handleAddSectionClick}>
             Add
-          </StyledAddSectionPopupButton>
+          </StyledAddSectionPopupButton> */}
           <StyledAddSectionPopupButton
             onClick={() => {
               setIsAddSectionPopupOpen(false);
