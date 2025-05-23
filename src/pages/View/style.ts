@@ -7,7 +7,7 @@ export const StyledContainer = styled(Grid)({
   alignItems: "flex-start",
   justifyContent: "flex-start",
   width: "100%",
-  height: "100%",
+  height: "100dvh",
   position: "relative",
   overflow: "hidden",
   backgroundColor: "transparent",
