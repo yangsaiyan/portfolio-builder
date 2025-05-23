@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+// import { useState } from "react";
 import {
   StyledAddSectionPopupActions,
   StyledAddSectionPopupButton,
   StyledAddSectionPopupContainer,
   StyledAddSectionPopupContent,
-  StyledAddSectionPopupInput,
+  // StyledAddSectionPopupInput,
   StyledAddSectionPopupTitle,
-  StyledSuggestionText,
-  StyledSuggestionContainer,
-  StyledSuggestionButton,
-  StyledSuggestionWrapper,
+  // StyledSuggestionText,
+  // StyledSuggestionContainer,
+  // StyledSuggestionButton,
+  // StyledSuggestionWrapper,
 } from "./style";
 
 interface EditAddSectionPopupProps {
@@ -19,29 +19,33 @@ interface EditAddSectionPopupProps {
 }
 
 export default function EditAddSectionPopup(props: EditAddSectionPopupProps) {
-  const { isAddSectionPopupOpen, setIsAddSectionPopupOpen, handleAddSection } =
-    props;
-  const [section, setSection] = useState<string>("");
-  const [count, setCount] = useState<number>(0);
+  const {
+    isAddSectionPopupOpen,
+    setIsAddSectionPopupOpen,
+    //  handleAddSection
+  } = props;
 
-  const handleAddSectionClick = (): void => {
-    if (section.trim() === "") return;
+  // const [section, setSection] = useState<string>("");
+  // const [count, setCount] = useState<number>(0);
 
-    handleAddSection(section);
-    setIsAddSectionPopupOpen(false);
-    setSection("");
-  };
+  // const handleAddSectionClick = (): void => {
+  //   if (section.trim() === "") return;
 
-  const handleSuggestionClick = (suggestion: string): void => {
-    setCount(count + 1);
-    setSection(suggestion);
-    if (count === 1 && suggestion === section) {
-      handleAddSectionClick();
-      setCount(0);
-    } else if (count === 1 && suggestion !== section) {
-      setCount(0);
-    }
-  };
+  //   handleAddSection(section);
+  //   setIsAddSectionPopupOpen(false);
+  //   setSection("");
+  // };
+
+  // const handleSuggestionClick = (suggestion: string): void => {
+  //   setCount(count + 1);
+  //   setSection(suggestion);
+  //   if (count === 1 && suggestion === section) {
+  //     handleAddSectionClick();
+  //     setCount(0);
+  //   } else if (count === 1 && suggestion !== section) {
+  //     setCount(0);
+  //   }
+  // };
 
   return (
     <StyledAddSectionPopupContainer

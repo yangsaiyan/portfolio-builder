@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import earthTexture from "/earthTexture.webp";
 import sunTexture from "/sunTexture.webp";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
