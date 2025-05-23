@@ -14,6 +14,7 @@ export default function View() {
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const isScrolling = useRef(false);
+  const touchStartY = useRef<number | null>(null);
 
   const SECTIONS = ["profile", "skills", "projects", "education"];
 
@@ -26,27 +27,60 @@ export default function View() {
       isScrolling.current = true;
       const direction = event.deltaY > 0 ? 1 : -1;
 
-      // Calculate new index with wrapping
       let newIndex = currentSectionIndex + direction;
       if (newIndex >= SECTIONS.length) {
-        newIndex = 0; // Reset to first section
+        newIndex = 0; 
       } else if (newIndex < 0) {
-        newIndex = SECTIONS.length - 1; // Go to last section
+        newIndex = SECTIONS.length - 1;
       }
 
       setCurrentSectionIndex(newIndex);
       setCurrentSection(SECTIONS[newIndex]);
 
-      // Reset scrolling flag after a short delay
+      setTimeout(() => {
+        isScrolling.current = false;
+      }, 300);
+    };
+
+    const handleTouchStart = (event: TouchEvent) => {
+      const touch = event.touches[0];
+      touchStartY.current = touch.clientY;
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (!touchStartY.current || isScrolling.current) return;
+
+      const touch = event.touches[0];
+      const deltaY = touchStartY.current - touch.clientY;
+      
+      if (Math.abs(deltaY) < 50) return;
+      isScrolling.current = true;
+      const direction = deltaY > 0 ? 1 : -1;
+
+      let newIndex = currentSectionIndex + direction;
+      if (newIndex >= SECTIONS.length) {
+        newIndex = 0;
+      } else if (newIndex < 0) {
+        newIndex = SECTIONS.length - 1;
+      }
+
+      setCurrentSectionIndex(newIndex);
+      setCurrentSection(SECTIONS[newIndex]);
+
+      touchStartY.current = null;
       setTimeout(() => {
         isScrolling.current = false;
       }, 300);
     };
 
     window.addEventListener("wheel", handleScroll, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
     };
   }, [currentSectionIndex]);
 
