@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { useEffect, useRef } from "react";
 import earthTexture from "/earthTexture.webp";
 import sunTexture from "/sunTexture.webp";
+import moonTexture from "/moonTexture.webp";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
@@ -20,7 +21,9 @@ export default function SpinningEarthBackground({
   const targetAngle = useRef(0);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const earthRef = useRef<THREE.Mesh | null>(null);
+  const moonRef = useRef<THREE.Mesh | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  const moonAngle = useRef(0);
 
   useEffect(() => {
     if (sections > 0) {
@@ -117,6 +120,38 @@ export default function SpinningEarthBackground({
             earth.receiveShadow = true;
             scene.add(earth);
 
+            const moonGeometry = new THREE.SphereGeometry(0.27, 32, 32);
+            textureLoader.load(
+              moonTexture,
+              (texture) => {
+                const moonMaterial = new THREE.MeshStandardMaterial({
+                  map: texture,
+                  roughness: 0.8,
+                  metalness: 0.1,
+                });
+                const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+                moonRef.current = moon;
+                moon.castShadow = true;
+                moon.receiveShadow = true;
+                scene.add(moon);
+
+                const moonOrbitGeometry = new THREE.RingGeometry(3, 3.1, 64);
+                const moonOrbitMaterial = new THREE.MeshBasicMaterial({
+                  color: 0xffffff,
+                  transparent: true,
+                  opacity: 0.1,
+                  side: THREE.DoubleSide,
+                });
+                const moonOrbit = new THREE.Mesh(moonOrbitGeometry, moonOrbitMaterial);
+                moonOrbit.rotation.x = Math.PI / 2;
+                scene.add(moonOrbit);
+              },
+              undefined,
+              (error) => {
+                console.error("Error loading moon texture:", error);
+              }
+            );
+
             const atmosphereGeometry = new THREE.SphereGeometry(1.1, 64, 64);
             const atmosphereMaterial = new THREE.MeshPhongMaterial({
               color: 0x0077ff,
@@ -169,11 +204,11 @@ export default function SpinningEarthBackground({
 
             scene.fog = new THREE.FogExp2(0x000000, 0.0005);
 
-            const orbitGeometry = new THREE.RingGeometry(20, 20.1, 128);
+            const orbitGeometry = new THREE.RingGeometry(20, 20.3, 128);
             const orbitMaterial = new THREE.MeshBasicMaterial({
               color: 0xffffff,
               transparent: true,
-              opacity: 0.1,
+              opacity: 0.05,
               side: THREE.DoubleSide,
             });
             const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
@@ -201,6 +236,15 @@ export default function SpinningEarthBackground({
 
               earth.rotation.y += 0.01;
               atmosphere.rotation.y += 0.01;
+
+              if (moonRef.current) {
+                moonAngle.current += 0.0005;
+                const moonDistance = 3;
+                moonRef.current.position.x = earth.position.x + Math.cos(moonAngle.current) * moonDistance;
+                moonRef.current.position.z = earth.position.z + Math.sin(moonAngle.current) * moonDistance;
+                moonRef.current.position.y = Math.sin(moonAngle.current * 0.5) * 0.5;
+                moonRef.current.rotation.y += 0.0005;
+              }
 
               stars.rotation.y += 0.00005;
 

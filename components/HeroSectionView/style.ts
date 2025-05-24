@@ -58,7 +58,7 @@ export const StyledName = styled(Typography)({
 });
 
 export const StyledDescription = styled(Typography)({
-  fontSize: "1rem",
+  fontSize: "clamp(1rem, 1.5rem, 2rem)",
   color: "white",
   textWrap: "wrap",
   textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
